@@ -1,0 +1,42 @@
+{
+  "name": "js-utils",
+  "version": "1.0.0",
+  "description": "Collection of various JavaScript utitilies",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "set NODE_ENV=testing & mocha --require @babel/register './src/test/*.test.js'",
+    "build": "babel src --out-dir dist",
+    "lint": "eslint \"./**/*.js\" --quiet",
+    "lintFull": "eslint \"./**/*.js\"",
+    "lintFix": "eslint --fix './**/*.js'"
+  },
+  "keywords": [
+    "js-utils",
+    "logger",
+    "firestorage",
+    "list-sort"
+  ],
+  "author": "Pranav raut",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "browser-md5-file": "^1.1.1",
+    "core-js": "^3.6.5",
+    "formdata-polyfill": "^3.0.20",
+    "is-plain-object": "^4.1.1",
+    "isobject": "^4.0.0",
+    "regenerator-runtime": "^0.13.7",
+    "url-search-params-polyfill": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/register": "^7.10.5",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "mocha": "^8.1.1",
+    "nodemon": "^2.0.4"
+  }
+}
