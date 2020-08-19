@@ -3,6 +3,11 @@ import URLSearchParams from "url-search-params-polyfill";
 import { clone } from "../object";
 import isPlainObject from "is-plain-object";
 
+/**
+ *
+ * @param {AxiosHelper} requestHelper
+ * @param {String} baseUrl
+ */
 function createAxios(requestHelper, baseUrl) {
   return new Axios.create({
     baseURL: baseUrl,
@@ -21,7 +26,7 @@ function createAxios(requestHelper, baseUrl) {
   });
 }
 
-export default class RequestHelper {
+export default class AxiosHelper {
   constructor(baseUrl = "http://localhost:3000/", token) {
     this.progressCallbacks = {};
     this.axios = createAxios(this, baseUrl);
@@ -113,17 +118,17 @@ export default class RequestHelper {
 
     return typeof callback == "function" ? callback(response) : response;
   }
+}
 
-  errorHandler(err) {
-    var message;
-    if (err.response && err.response.data) {
-      if (err.response.data.error) console.info(err.response.data.error);
-      console.info("Config", err.config);
-      message = err.response.data.message;
-    } else {
-      console.info("Error", err);
-      message = err.message;
-    }
-    return message;
+export function errorHandler(err) {
+  var message;
+  if (err.response && err.response.data) {
+    if (err.response.data.error) console.info(err.response.data.error);
+    console.info("Config", err.config);
+    message = err.response.data.message;
+  } else {
+    console.info("Error", err);
+    message = err.message;
   }
+  return message;
 }

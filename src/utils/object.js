@@ -54,10 +54,10 @@ export const isEqual = (a, b) => equal(a, b);
  * @param {...Any} parameters
  */
 export function run(object, name, ...parameters) {
-  let temp = object[name];
+  let func = object[name];
   parameters = parameters || [];
 
-  if (temp && typeof temp === "function") {
-    temp(...parameters);
+  if (func && typeof func === "function") {
+    func(...parameters);
   }
 }

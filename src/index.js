@@ -6,8 +6,10 @@ export const object = require("./utils/object");
 
 export const regex = require("./utils/regex");
 
-export const AxiosHelper = require("./utils/AxiosHelper");
+export const AxiosHelper = require("./utils/AxiosHelper").default;
 
-export const FireStorageHelper = require("./utils/FireStorageHelper");
+export const errorHandler = require("./utils/AxiosHelper").errorHandler;
+
+export const FireStorageHelper = require("./utils/FireStorageHelper").default;
 
 export const navigation = require("./utils/navigation");
