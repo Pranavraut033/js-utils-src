@@ -1,4 +1,4 @@
-import { fileMD5Hash, getExtension } from "../file";
+import { fileMD5Hash } from "../file";
 import { run } from "../object";
 
 function addStateChangeListener(uploadTask, path, options) {
@@ -40,8 +40,6 @@ export default class FireStorageHelper {
   async uploadFile(path, file, options) {
     const fileHash = await fileMD5Hash(file);
 
-    path = `${path}/${fileHash}.${getExtension(file.name)}`;
-
     const uploadTask = this.storageRef.child(path).put(file, {
       contentType: file.type,
       md5Hash: fileHash,
@@ -54,8 +52,6 @@ export default class FireStorageHelper {
   }
 
   async uploadString(path, dataString, type = "data_url", options) {
-    path = `${path}/${Date.now()}.${getExtension(path)}`;
-
     const uploadTask = this.storageRef.child(path).putString(dataString, type);
     addStateChangeListener(uploadTask, path, options);
     return uploadTask;
