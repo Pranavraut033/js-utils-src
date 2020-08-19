@@ -1,15 +1,17 @@
 // export const date = require("./utils/date");
+import { default as AxiosHelper, errorHandler } from "./utils/AxiosHelper";
+import { default as FireStorageHelper } from "./utils/FireStorageHelper";
+import list from "./utils/list";
+import regex from "./utils/regex";
+import object from "./utils/object";
+import navigation from "./utils/navigation";
 
-export const list = require("./utils/list");
-
-export const object = require("./utils/object");
-
-export const regex = require("./utils/regex");
-
-export const AxiosHelper = require("./utils/AxiosHelper").default;
-
-export const errorHandler = require("./utils/AxiosHelper").errorHandler;
-
-export const FireStorageHelper = require("./utils/FireStorageHelper").default;
-
-export const navigation = require("./utils/navigation");
+export {
+  AxiosHelper,
+  FireStorageHelper,
+  errorHandler,
+  list,
+  regex,
+  object,
+  navigation,
+};
