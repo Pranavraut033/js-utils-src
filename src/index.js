@@ -11,10 +11,12 @@ import * as number from "./utils/number";
 
 import { default as AxiosHelper, errorHandler } from "./utils/AxiosHelper";
 import { default as FireStorageHelper } from "./utils/FireStorageHelper";
+import { default as SocketRouter } from "./utils/SocketRouter";
 
 export {
   AxiosHelper,
   FireStorageHelper,
+  SocketRouter,
   errorHandler,
   getColor,
   queryPaser,
