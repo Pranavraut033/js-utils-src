@@ -27,6 +27,11 @@ function addStateChangeListener(uploadTask, path, options) {
   );
 }
 export default class FireStorageHelper {
+  /**
+   *
+   * @param {*} fireStorage firebase storeage class
+   * @param {*} storageRef firebase storage root ref
+   */
   constructor(fireStorage, storageRef) {
     this.fireStorage = fireStorage;
     this.storageRef = storageRef;
@@ -57,7 +62,7 @@ export default class FireStorageHelper {
   }
 
   getDownloadPath(path) {
-    return this.storageRef.ref(path).getDownloadURL();
+    return this.storageRef.child(path).getDownloadURL();
   }
 
   deleteFile(...files) {
