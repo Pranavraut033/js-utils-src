@@ -1,5 +1,5 @@
 import Axios from "axios";
-import URLSearchParams from "url-search-params-polyfill";
+import "url-search-params-polyfill";
 import { clone } from "../object";
 import isPlainObject from "is-plain-object";
 

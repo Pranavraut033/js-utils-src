@@ -8,15 +8,15 @@ function addStateChangeListener(uploadTask, path, options) {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
       run(options, "onProgress", progress);
-
-      switch (snapshot.state) {
-        case this.fireStorage.TaskState.PAUSED:
-          run(options, "onPause");
-          break;
-        case this.fireStorage.TaskState.RUNNING:
-          run(options, "onRunning");
-          break;
-      }
+      if (this.fireStorage)
+        switch (snapshot.state) {
+          case this.fireStorage.TaskState.PAUSED:
+            run(options, "onPause");
+            break;
+          case this.fireStorage.TaskState.RUNNING:
+            run(options, "onRunning");
+            break;
+        }
     },
     function (error) {
       run(options, "onFailed", error);
@@ -26,6 +26,7 @@ function addStateChangeListener(uploadTask, path, options) {
     }
   );
 }
+
 export default class FireStorageHelper {
   /**
    *
@@ -46,14 +47,14 @@ export default class FireStorageHelper {
       customMetadata: {},
     });
 
-    addStateChangeListener(uploadTask, path, options);
+    addStateChangeListener.bind(this)(uploadTask, path, options);
 
     return uploadTask;
   }
 
   async uploadString(path, dataString, type = "data_url", options) {
     const uploadTask = this.storageRef.child(path).putString(dataString, type);
-    addStateChangeListener(uploadTask, path, options);
+    addStateChangeListener.bind(this)(uploadTask, path, options);
     return uploadTask;
   }
 
