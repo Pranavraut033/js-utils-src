@@ -2,6 +2,7 @@
 
 import getColor from "./utils/getColor";
 import queryPaser from "./utils/middleware/queryPaser";
+import mongoObjectId from "./utils/mongoObjectId";
 
 import * as httpErrors from "./utils/httpErrors";
 import * as list from "./utils/list";
@@ -20,6 +21,7 @@ export {
   errorHandler,
   getColor,
   queryPaser,
+  mongoObjectId,
   httpErrors,
   list,
   number,
