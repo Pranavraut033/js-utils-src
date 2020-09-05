@@ -24,7 +24,6 @@
     "clone": "^2.1.2",
     "core-js": "^3.6.5",
     "deep-equal": "^2.0.3",
-    "is-plain-object": "^4.1.1",
     "is-string": "^1.0.5",
     "isobject": "^4.0.0",
     "regenerator-runtime": "^0.13.7",

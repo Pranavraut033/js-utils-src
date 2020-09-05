@@ -1,7 +1,6 @@
 import Axios from "axios";
 import "url-search-params-polyfill";
 import { clone } from "../object";
-import isPlainObject from "is-plain-object";
 
 /**
  *
@@ -57,22 +56,7 @@ export default class AxiosHelper {
     var headersToAdd = null,
       queryItems = null;
 
-    if (isPlainObject(data)) {
-      if (data.id) url += "/" + data.id;
-      delete data.id;
-
-      if ("header" in data) {
-        headersToAdd = clone(data.header);
-
-        delete data.header;
-      }
-
-      if ("query" in data) {
-        queryItems = clone(data.query);
-
-        delete data.query;
-      }
-    } else {
+    if (data instanceof FormData) {
       let id = data.get("id");
       if (id) url += "/" + id;
 
@@ -90,6 +74,21 @@ export default class AxiosHelper {
       if (query) {
         queryItems = query;
         data.delete("query");
+      }
+    } else {
+      if (data.id) url += "/" + data.id;
+      delete data.id;
+
+      if ("header" in data) {
+        headersToAdd = clone(data.header);
+
+        delete data.header;
+      }
+
+      if ("query" in data) {
+        queryItems = clone(data.query);
+
+        delete data.query;
       }
     }
 
