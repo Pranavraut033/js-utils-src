@@ -13,11 +13,15 @@ import * as number from "./utils/number";
 import { default as AxiosHelper, errorHandler } from "./utils/AxiosHelper";
 import { default as FireStorageHelper } from "./utils/FireStorageHelper";
 import { default as SocketRouter } from "./utils/SocketRouter";
+import { default as Logger } from "./utils/Logger";
+import { default as Cache } from "./utils/Cache";
 
 export {
   AxiosHelper,
   FireStorageHelper,
   SocketRouter,
+  Cache,
+  Logger,
   errorHandler,
   getColor,
   queryPaser,

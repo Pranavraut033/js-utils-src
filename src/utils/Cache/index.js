@@ -1,7 +1,7 @@
 import ms from "ms";
 import Logger from "../Logger";
 
-const logger = Logger();
+const logger = new Logger("Cache");
 
 export default function (name) {
   if (!name) throw new Error("Name required");
