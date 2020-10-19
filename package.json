@@ -19,7 +19,7 @@
   "author": "Pranav raut",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.20.0",
     "browser-md5-file": "^1.1.1",
     "clone": "^2.1.2",
     "core-js": "^3.6.5",
