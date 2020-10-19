@@ -56,7 +56,7 @@ export default class AxiosHelper {
     var headersToAdd = null,
       queryItems = null;
 
-    if (data instanceof FormData) {
+    if (global.FormData && data instanceof global.FormData) {
       let id = data.get("id");
       if (id) url += "/" + id;
 
