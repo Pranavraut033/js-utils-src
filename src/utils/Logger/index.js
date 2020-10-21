@@ -14,7 +14,7 @@ export default class Logger {
    */
   d(message, ...optionalParams) {
     if (this.force || !isProduction())
-      console.debug(`${tag}:`, ...[message, ...optionalParams]);
+      console.debug(`${this.tag}:`, ...[message, ...optionalParams]);
   }
 
   /**
@@ -23,7 +23,7 @@ export default class Logger {
    * @param  {...any} optionalParams
    */
   e(message, ...optionalParams) {
-    console.error(`${tag}:`, ...[message, ...optionalParams]);
+    console.error(`${this.tag}:`, ...[message, ...optionalParams]);
   }
 
   /**
@@ -32,7 +32,7 @@ export default class Logger {
    * @param  {...any} optionalParams
    */
   l(message, ...optionalParams) {
-    console.log(`${tag}:`, ...[message, ...optionalParams]);
+    console.log(`${this.tag}:`, ...[message, ...optionalParams]);
   }
 
   /**
@@ -42,7 +42,7 @@ export default class Logger {
    */
   w(message, ...optionalParams) {
     if (this.force || !isProduction())
-      console.log(`${tag}:`, ...[message, ...optionalParams]);
+      console.log(`${this.tag}:`, ...[message, ...optionalParams]);
   }
 
   /**
