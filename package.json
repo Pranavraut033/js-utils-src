@@ -1,6 +1,6 @@
 {
   "name": "js-utils",
-  "version": "1.0.0",
+  "version": "1.3.9",
   "description": "Collection of various JavaScript utitilies",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,10 @@
     "build": "babel src --out-dir dist",
     "lint": "eslint \"./**/*.js\" --quiet",
     "lintFull": "eslint \"./**/*.js\"",
-    "lintFix": "eslint --fix './**/*.js'"
+    "lintFix": "eslint --fix './**/*.js'",
+    "copy_to_repo": "@powershell copy \"./dist/*\" \"./repo/\" -r",
+    "remove_existing": "rm repo/utils -r & rm repo/index.js",
+    "publish": "yarn build && yarn remove_existing & yarn copy_to_repo && cd ./repo && git stage * && yarn publish"
   },
   "keywords": [
     "js-utils",
