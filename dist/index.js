@@ -94,6 +94,10 @@ var regex = _interopRequireWildcard(require("./utils/regex"));
 
 var object = _interopRequireWildcard(require("./utils/object"));
 
+var cookie = _interopRequireWildcard(require("./utils/cookie"));
+
+var utils = _interopRequireWildcard(require("./utils"));
+
 var number = _interopRequireWildcard(require("./utils/number"));
 
 var _AxiosHelper = _interopRequireWildcard(require("./utils/AxiosHelper"));
@@ -130,7 +134,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var a = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, list), httpErrors), regex), object), number);
+var a = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, list), httpErrors), regex), cookie), object), number), utils);
 
 Object.entries(a).forEach(function (_ref) {
   var _ref2 = _slicedToArray(_ref, 2),
