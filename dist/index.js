@@ -31,6 +31,12 @@ Object.defineProperty(exports, "getColor", {
     return _getColor["default"];
   }
 });
+Object.defineProperty(exports, "setColor", {
+  enumerable: true,
+  get: function get() {
+    return _getColor.setColor;
+  }
+});
 Object.defineProperty(exports, "queryPaser", {
   enumerable: true,
   get: function get() {
@@ -80,7 +86,7 @@ Object.defineProperty(exports, "CacheHelper", {
   }
 });
 
-var _getColor = _interopRequireDefault(require("./utils/getColor"));
+var _getColor = _interopRequireWildcard(require("./utils/getColor"));
 
 var _queryPaser = _interopRequireDefault(require("./utils/middleware/queryPaser"));
 
@@ -110,11 +116,11 @@ var _Logger = _interopRequireDefault(require("./utils/Logger"));
 
 var _CacheHelper = _interopRequireDefault(require("./utils/CacheHelper"));
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
