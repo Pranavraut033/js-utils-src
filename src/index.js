@@ -9,15 +9,15 @@ import * as list from "./utils/list";
 import * as regex from "./utils/regex";
 import * as object from "./utils/object";
 import * as number from "./utils/number";
-import * as axiosHelper from "./utils/AxiosHelper";
+import AxiosHelper, { errorHandler } from "./utils/AxiosHelper";
 
-import { default as FireStorageHelper } from "./utils/FireStorageHelper";
-import { default as SocketRouter } from "./utils/SocketRouter";
-import { default as Logger } from "./utils/Logger";
+import FireStorageHelper from "./utils/FireStorageHelper";
+import SocketRouter from "./utils/SocketRouter";
+import Logger from "./utils/Logger";
 import CacheHelper from "./utils/CacheHelper";
 
-export default {
-  AxiosHelper: axiosHelper.default,
+export {
+  AxiosHelper,
   FireStorageHelper,
   CacheHelper,
   SocketRouter,
@@ -25,10 +25,15 @@ export default {
   getColor,
   queryPaser,
   mongoObjectId,
-  errorHandler: axiosHelper.errorHandler,
+  errorHandler,
+};
+
+let a = {
   ...list,
   ...httpErrors,
   ...regex,
   ...object,
   ...number,
 };
+
+Object.entries(a).forEach(([key, value]) => (module.exports[key] = value));
