@@ -53,15 +53,32 @@ var Logger = /*#__PURE__*/function () {
      */
 
   }, {
-    key: "e",
-    value: function e(message) {
+    key: "i",
+    value: function i(message) {
       var _console2;
 
       for (var _len2 = arguments.length, optionalParams = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
         optionalParams[_key2 - 1] = arguments[_key2];
       }
 
-      (_console2 = console).error.apply(_console2, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
+      if (this.force || !(0, _.isProduction)()) (_console2 = console).info.apply(_console2, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
+    }
+    /**
+     *
+     * @param {any} message
+     * @param  {...any} optionalParams
+     */
+
+  }, {
+    key: "e",
+    value: function e(message) {
+      var _console3;
+
+      for (var _len3 = arguments.length, optionalParams = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        optionalParams[_key3 - 1] = arguments[_key3];
+      }
+
+      (_console3 = console).error.apply(_console3, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
     }
     /**
      *
@@ -72,13 +89,13 @@ var Logger = /*#__PURE__*/function () {
   }, {
     key: "l",
     value: function l(message) {
-      var _console3;
+      var _console4;
 
-      for (var _len3 = arguments.length, optionalParams = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
-        optionalParams[_key3 - 1] = arguments[_key3];
+      for (var _len4 = arguments.length, optionalParams = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
+        optionalParams[_key4 - 1] = arguments[_key4];
       }
 
-      (_console3 = console).log.apply(_console3, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
+      (_console4 = console).log.apply(_console4, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
     }
     /**
      *
@@ -89,13 +106,13 @@ var Logger = /*#__PURE__*/function () {
   }, {
     key: "w",
     value: function w(message) {
-      var _console4;
+      var _console5;
 
-      for (var _len4 = arguments.length, optionalParams = new Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
-        optionalParams[_key4 - 1] = arguments[_key4];
+      for (var _len5 = arguments.length, optionalParams = new Array(_len5 > 1 ? _len5 - 1 : 0), _key5 = 1; _key5 < _len5; _key5++) {
+        optionalParams[_key5 - 1] = arguments[_key5];
       }
 
-      if (this.force || !(0, _.isProduction)()) (_console4 = console).log.apply(_console4, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
+      if (this.force || !(0, _.isProduction)()) (_console5 = console).log.apply(_console5, ["".concat(this.tag, ":")].concat([message].concat(optionalParams)));
     }
     /**
      * call always to skip debug check
@@ -112,4 +129,5 @@ var Logger = /*#__PURE__*/function () {
   return Logger;
 }();
 
-exports["default"] = Logger;
+var _default = Logger;
+exports["default"] = _default;

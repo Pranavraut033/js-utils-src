@@ -10,8 +10,6 @@ require("core-js/modules/es.object.to-string");
 
 require("core-js/modules/es.parse-int");
 
-require("core-js/modules/es.promise");
-
 require("core-js/modules/es.regexp.to-string");
 
 require("core-js/modules/es.string.iterator");
@@ -32,6 +30,8 @@ var _axios = _interopRequireDefault(require("axios"));
 
 require("url-search-params-polyfill");
 
+var _Logger = _interopRequireDefault(require("../Logger"));
+
 var _object = require("../object");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -46,11 +46,13 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var logger = new _Logger["default"]("Axios");
 /**
  *
  * @param {AxiosHelper} requestHelper
  * @param {String} baseUrl
  */
+
 function createAxios(requestHelper, baseUrl) {
   return new _axios["default"].create({
     baseURL: baseUrl,
@@ -220,10 +222,10 @@ function errorHandler(err) {
 
   if (err.response && err.response.data) {
     if (err.response.data.error) console.info(err.response.data.error);
-    console.info("Config", err.config);
+    logger.i("Config", err.config);
     message = err.response.data.message;
   } else {
-    console.info("Error", err);
+    logger.w("Error", err);
     message = err.message;
   }
 

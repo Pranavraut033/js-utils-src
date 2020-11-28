@@ -1,7 +1,7 @@
 import { isProduction } from "..";
 
 /* eslint-disable */
-export default class Logger {
+class Logger {
   constructor(tag = "Logger", force = false) {
     this.tag = tag;
     this.force = force;
@@ -16,7 +16,15 @@ export default class Logger {
     if (this.force || !isProduction())
       console.debug(`${this.tag}:`, ...[message, ...optionalParams]);
   }
-
+  /**
+   *
+   * @param {any} message
+   * @param  {...any} optionalParams
+   */
+  i(message, ...optionalParams) {
+    if (this.force || !isProduction())
+      console.info(`${this.tag}:`, ...[message, ...optionalParams]);
+  }
   /**
    *
    * @param {any} message
@@ -53,3 +61,5 @@ export default class Logger {
     return this;
   }
 }
+
+export default Logger;

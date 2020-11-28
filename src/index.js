@@ -9,26 +9,26 @@ import * as list from "./utils/list";
 import * as regex from "./utils/regex";
 import * as object from "./utils/object";
 import * as number from "./utils/number";
+import * as axiosHelper from "./utils/AxiosHelper";
 
-import { default as AxiosHelper, errorHandler } from "./utils/AxiosHelper";
 import { default as FireStorageHelper } from "./utils/FireStorageHelper";
 import { default as SocketRouter } from "./utils/SocketRouter";
 import { default as Logger } from "./utils/Logger";
-import { default as Cache } from "./utils/Cache";
+import CacheHelper from "./utils/CacheHelper";
 
-export {
-  AxiosHelper,
+export default {
+  AxiosHelper: axiosHelper.default,
   FireStorageHelper,
+  CacheHelper,
   SocketRouter,
-  Cache,
   Logger,
-  errorHandler,
   getColor,
   queryPaser,
   mongoObjectId,
-  httpErrors,
-  list,
-  number,
-  object,
-  regex,
+  errorHandler: axiosHelper.errorHandler,
+  ...list,
+  ...httpErrors,
+  ...regex,
+  ...object,
+  ...number,
 };

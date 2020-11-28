@@ -1,14 +1,16 @@
 {
   "name": "@pranavraut033/js-utils",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "Collection of various JavaScript utitilies",
-  "main": "dist/index.bundle.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "set NODE_ENV=testing & mocha --require @babel/register './src/test/*.test.js'",
-    "build": "webpack --config ./build/webpack.prod.js",
+    "build": "babel src --out-dir dist",
     "lint": "eslint \"./**/*.js\" --quiet",
     "lintFull": "eslint \"./**/*.js\"",
-    "lintFix": "eslint --fix './**/*.js'"
+    "lintFix": "eslint --fix './**/*.js'",
+    "prebuild": "rm ./dist -r",
+    "prepublish": "npm run build"
   },
   "files": [
     "/dist"
@@ -21,28 +23,27 @@
   ],
   "author": "Pranav raut <pranavraut033@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/node": "^7.10.5",
-    "@babel/preset-env": "^7.11.0",
-    "@babel/register": "^7.10.5",
+  "dependencies": {
     "axios": "^0.20.0",
-    "babel-eslint": "^10.1.0",
     "browser-md5-file": "^1.1.1",
     "clone": "^2.1.2",
     "core-js": "^3.6.5",
     "deep-equal": "^2.0.3",
-    "eslint": "^7.7.0",
     "is-string": "^1.0.5",
     "isobject": "^4.0.0",
-    "mocha": "^8.1.1",
     "ms": "^2.1.2",
-    "nodemon": "^2.0.4",
     "regenerator-runtime": "^0.13.7",
     "string-to-color": "^2.2.2",
-    "url-search-params-polyfill": "^8.1.0",
-    "webpack": "^5.8.0",
-    "webpack-cli": "^4.1.0"
+    "url-search-params-polyfill": "^8.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.8",
+    "@babel/core": "^7.12.9",
+    "@babel/node": "^7.12.6",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/register": "^7.12.1",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0"
   },
   "repository": {
     "type": "git",

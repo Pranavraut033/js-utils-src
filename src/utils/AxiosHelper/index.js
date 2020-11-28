@@ -1,7 +1,9 @@
 import Axios from "axios";
 import "url-search-params-polyfill";
+import Logger from "../Logger";
 import { clone } from "../object";
 
+const logger = new Logger("Axios");
 /**
  *
  * @param {AxiosHelper} requestHelper
@@ -123,11 +125,12 @@ export function errorHandler(err) {
   var message;
   if (err.response && err.response.data) {
     if (err.response.data.error) console.info(err.response.data.error);
-    console.info("Config", err.config);
+    logger.i("Config", err.config);
     message = err.response.data.message;
   } else {
-    console.info("Error", err);
+    logger.w("Error", err);
     message = err.message;
   }
+
   return message;
 }
