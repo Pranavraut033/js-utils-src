@@ -11,7 +11,7 @@ export default class SocketRouter {
   createSocket(id) {
     if (this.sockets[id]) return;
 
-    this.sockets[id] = this.IO.of("/" + id).on("connection", function () {
+    this.sockets[id] = this.IO.of("/" + id).on("connection", () => {
       console.log("Socket:", id + ": connected");
 
       this.sockets[id].on("disconnect", () => {
@@ -36,19 +36,19 @@ export default class SocketRouter {
   register(router, authFunction) {
     authFunction = authFunction || ((_, __, next) => next());
 
-    router.get("/socket/create/:id", authFunction, function (req, res) {
+    router.get("/socket/create/:id", authFunction, (req, res) => {
       this.createSocket(req.params.id);
       res.send("ok");
     });
 
-    router.post("/socket/send/:id", authFunction, function (req, res) {
+    router.post("/socket/send/:id", authFunction, (req, res) => {
       let err = this.sendData(req.params.id, req.body.event, req.body.data);
 
       if (err) create404(res, err);
       else res.json("ok");
     });
 
-    router.post("/socket/isConnected/:id", authFunction, function (req, res) {
+    router.post("/socket/isConnected/:id", authFunction, (req, res) => {
       if (!this.sockets[req.params.id])
         return create404(res, "No socket available");
 
