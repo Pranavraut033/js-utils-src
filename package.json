@@ -1,6 +1,6 @@
 {
   "name": "@pranavraut033/js-utils",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "Collection of various JavaScript utitilies",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "lintFull": "eslint \"./**/*.js\"",
     "lintFix": "eslint --fix './**/*.js'",
     "prebuild": "rm ./dist -r",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build && git add *"
   },
   "files": [
     "/dist"

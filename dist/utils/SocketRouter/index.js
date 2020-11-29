@@ -27,10 +27,13 @@ var SocketRouter = /*#__PURE__*/function () {
   _createClass(SocketRouter, [{
     key: "createSocket",
     value: function createSocket(id) {
+      var _this = this;
+
       if (this.sockets[id]) return;
       this.sockets[id] = this.IO.of("/" + id).on("connection", function () {
         console.log("Socket:", id + ": connected");
-        this.sockets[id].on("disconnect", function () {
+
+        _this.sockets[id].on("disconnect", function () {
           console.log("Socket:", id + ": disconnected");
         });
       });
@@ -52,21 +55,25 @@ var SocketRouter = /*#__PURE__*/function () {
   }, {
     key: "register",
     value: function register(router, authFunction) {
+      var _this2 = this;
+
       authFunction = authFunction || function (_, __, next) {
         return next();
       };
 
       router.get("/socket/create/:id", authFunction, function (req, res) {
-        this.createSocket(req.params.id);
+        _this2.createSocket(req.params.id);
+
         res.send("ok");
       });
       router.post("/socket/send/:id", authFunction, function (req, res) {
-        var err = this.sendData(req.params.id, req.body.event, req.body.data);
+        var err = _this2.sendData(req.params.id, req.body.event, req.body.data);
+
         if (err) (0, _httpErrors.create404)(res, err);else res.json("ok");
       });
       router.post("/socket/isConnected/:id", authFunction, function (req, res) {
-        if (!this.sockets[req.params.id]) return (0, _httpErrors.create404)(res, "No socket available");
-        res.send(this.sockets[req.params.id].isConnected);
+        if (!_this2.sockets[req.params.id]) return (0, _httpErrors.create404)(res, "No socket available");
+        res.send(_this2.sockets[req.params.id].isConnected);
       });
     }
   }]);
