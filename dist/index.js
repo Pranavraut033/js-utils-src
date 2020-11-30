@@ -147,5 +147,10 @@ Object.entries(a).forEach(function (_ref) {
       key = _ref2[0],
       value = _ref2[1];
 
-  return module.exports[key] = value;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return value;
+    }
+  });
 });

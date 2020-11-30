@@ -41,4 +41,11 @@ let a = {
   ...utils,
 };
 
-Object.entries(a).forEach(([key, value]) => (module.exports[key] = value));
+Object.entries(a).forEach(([key, value]) => {
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return value;
+    },
+  });
+});
